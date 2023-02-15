@@ -3,6 +3,7 @@ services:
     speedtest:
         container_name: speedtest
         image: henrywhitaker3/speedtest-tracker
+        network_mode: bridge
         ports:
             - 8788:80
         volumes:
