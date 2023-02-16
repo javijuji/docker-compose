@@ -1,0 +1,18 @@
+---
+version: "3.3"
+services:
+    komga:
+        image: gotson/komga
+        container_name: komga
+        network_mode: bridge
+        ports:
+            - 8341:8080
+        environment:
+            - PUID=1029
+            - PGID=100
+            - TZ=America/Buenos_Aires
+
+        volumes:
+            - /volume1/docker/komga/:/config
+            - /volume1/data/media/manga:/data
+        restart: unless-stopped
