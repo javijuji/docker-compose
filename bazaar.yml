@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    network_mode: bridge
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=America/Buenos_Aires
+    volumes:
+      - /volume1/docker/bazarr:/config
+      - /volume1/data:/data
+    ports:
+      - 6767:6767
+    restart: unless-stopped
