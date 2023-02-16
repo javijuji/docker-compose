@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  dockerproxy:
+    image: ghcr.io/tecnativa/docker-socket-proxy:latest
+    container_name: dockerproxy
+    network_mode: bridge
+    environment:
+        - CONTAINERS=1 # Allow access to viewing containers
+        - IMAGES=1
+        - POST=0 # Disallow any POST operations (effectively read-only)
+    ports:
+        - 2375:2375
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro # Mounted as read-only
+    restart: unless-stopped
+    
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    environment:
+      - DOCKER_HOST=dockerproxy
+    network_mode: bridge
+    ports:
+      - 3000:3000
+    volumes:
+      - /volume1/docker/homepage/config:/app/config # Make sure your local config directory exists
+      - /volume1/docker/homepage/images:/app/public/images
+    restart: unless-stopped
