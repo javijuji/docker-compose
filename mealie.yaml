@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    mealie:
+        container_name: mealie
+        image: hkotel/mealie
+        network_mode: bridge
+        ports:
+            - 9777:80
+        environment:
+            - TZ=America/Buenos_Aires
+            - db_type=sqlite
+            - ALLOW_SIGNUP=false 
+        volumes:
+            - /volume1/docker/mealie:/app/data
+        restart: unless-stopped
