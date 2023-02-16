@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr2
+    network_mode: bridge
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=America/Buenos_Aires
+    volumes:
+      - /volume1/docker/sonarr2:/config
+      - /volume1/data:/data #optional
+
+    ports:
+      - 8990:8989
+    restart: unless-stopped
