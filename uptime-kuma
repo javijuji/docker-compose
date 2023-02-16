@@ -1,0 +1,16 @@
+---
+version: '3.3'
+services:
+    uptime-kuma:
+      image: louislam/uptime-kuma
+      container_name: uptime-kuma
+      network_mode: bridge
+      ports:
+        - 3001:3001  # <Host Port>:<Container Port>
+      volumes:
+        - /volume1/docker/uptime-kuma:/app/data
+      environment:
+        - PUID=1029
+        - PGID=100
+        - TZ=America/Buenos_Aires
+      restart: unless-stopped
