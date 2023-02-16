@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    network_mode: bridge
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=America/Buenos_Aires
+    volumes:
+      - /volume1/docker/prowlarr/:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
