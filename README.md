@@ -1,2 +1,1 @@
-# portainer
-portainer repository
+Docker container definitions (docker-compose.yml) that I run.
