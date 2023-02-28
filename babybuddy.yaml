@@ -4,6 +4,7 @@ services:
   babybuddy:
     image: lscr.io/linuxserver/babybuddy:latest
     container_name: babybuddy
+    network_mode: bridge
     environment:
       - PUID=1029
       - PGID=100
