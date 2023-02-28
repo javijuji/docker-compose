@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+  babybuddy:
+    image: lscr.io/linuxserver/babybuddy:latest
+    container_name: babybuddy
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=America/Buenos_Aires
+    volumes:
+      - /volume1/docker/babybuddy:/config
+    ports:
+      - 8001:8000
+    restart: unless-stopped
