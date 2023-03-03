@@ -4,7 +4,7 @@ services:
     uptime-kuma:
       image: louislam/uptime-kuma
       container_name: uptime-kuma
-      network_mode: bridge
+      network_mode: bridge0
       ports:
         - 3001:3001  # <Host Port>:<Container Port>
       volumes:
