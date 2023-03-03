@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    container_name: pyload-ng
+    network_mode: bridge0
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=America/Buenos_Aires
+    volumes:
+      - /volume1/docker/pyload-ng/config:/config
+      - /volume1/data/downloads:/downloads
+    ports:
+      - 8002:8000
+      - 9666:9666 #optional
+    restart: unless-stopped
