@@ -4,7 +4,7 @@ services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr2
-    network_mode: bridge
+    network_mode: bridge0
     environment:
       - PUID=1029
       - PGID=100
